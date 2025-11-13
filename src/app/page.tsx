@@ -108,12 +108,12 @@ export default function Home() {
               >
                 Testimonials
               </Link>
-              <Link
+              {/* <Link
                 href="#pricing"
                 className="text-slate-700 dark:text-slate-300 hover:text-emerald-600 transition-colors"
               >
                 Pricing
-              </Link>
+              </Link> */}
               <Link
                 href="/signin"
                 className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:text-emerald-600 transition-colors"
