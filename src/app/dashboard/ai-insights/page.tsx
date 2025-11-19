@@ -332,11 +332,11 @@ export default function AIInsightsPage() {
                       </div>
                     </div>
                   </div>
-                  {insight.actionable && (
+                  {/* {insight.actionable && (
                     <button className="ml-4 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl transition-colors flex-shrink-0">
                       Take Action
                     </button>
-                  )}
+                  )} */}
                 </div>
               </div>
             );
