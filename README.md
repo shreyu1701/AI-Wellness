@@ -42,13 +42,12 @@ WellnessAI is a full-stack web application designed to help users:
   - Date and time selection
   - Energy level (1-10 scale)
   - Stress level (1-10 scale)
-  - Optional notes/reflections
+  - Notes/reflections
 - Multiple mood entries per day support
 - Mood history with chronological sorting
 
 ### 3. **Dashboard**
 
-- Personalized welcome message
 - Real-time statistics:
   - Current streak (consecutive days with mood entries)
   - Average mood score
@@ -98,24 +97,17 @@ WellnessAI is a full-stack web application designed to help users:
   - Email notifications toggle
   - Push notifications toggle
   - Weekly summary toggle
-  - Preferences saved in localStorage
 - **Data Management:**
   - Export all wellness data as JSON
   - Account deletion with confirmation
-- **Dark Mode:**
-  - Theme toggle
-  - Persistent preference
-  - System-wide application
 
 ### 7. **UI/UX Features**
 
 - Glass morphism design
 - Responsive layout (mobile, tablet, desktop)
-- Dark mode support
 - Smooth animations and transitions
 - Loading states and skeletons
 - Success/Error notification popups
-- Empty states with helpful messages
 
 ## 🛠 Technology Stack
 
@@ -204,7 +196,7 @@ npm install
 
 ### Step 3: Environment Configuration
 
-Create a `.env.local` file in the `frontend` directory:
+Create a `.env` file in the `frontend` directory:
 
 ```env
 # MongoDB Connection String
@@ -239,14 +231,14 @@ npm start
 1. Create a MongoDB Atlas account or use local MongoDB
 2. Create a new database cluster
 3. Get your connection string
-4. Add it to `.env.local` as `MONGODB_URI`
+4. Add it to `.env` as `MONGODB_URI`
 5. Ensure your IP is whitelisted (for Atlas)
 
 ### OpenAI Setup (Optional)
 
 1. Create an OpenAI account
 2. Generate an API key
-3. Add it to `.env.local` as `OPENAI_API_KEY`
+3. Add it to `.env` as `OPENAI_API_KEY`
 4. Without this key, AI insights will show fallback recommendations
 
 ## 📡 API Documentation
@@ -563,7 +555,7 @@ Change user password.
    - Date (defaults to today)
    - Energy level (slider)
    - Stress level (slider)
-   - Notes (optional)
+   - Notes
 4. On save:
    - Current time is added to date
    - Entry is saved to database
@@ -588,7 +580,7 @@ Change user password.
 1. User navigates to AI Insights page
 2. System fetches recent mood entries with notes (last 30 days)
 3. If OpenAI API key exists:
-   - Notes are sent to OpenAI GPT-3.5-turbo
+   - Notes are sent to OpenAI GPT Model
    - AI generates personalized recommendations
    - Recommendations are displayed
 4. If no API key or error:
@@ -651,7 +643,7 @@ Change user password.
 #### Recommendation Generation
 
 - Analyzes mood notes from last 30 days
-- Uses OpenAI GPT-3.5-turbo for analysis
+- Uses OpenAI GPT Models for analysis
 - Generates 3-5 actionable recommendations
 - Each recommendation includes:
   - Title
@@ -746,7 +738,6 @@ npm start
 
 ### Current Limitations
 
-- Account deletion clears localStorage but doesn't delete from database (API endpoint needed)
 - No email verification system
 - No password reset functionality
 - No social authentication
@@ -757,13 +748,13 @@ npm start
 - Email verification
 - Password reset via email
 - Social login (Google, GitHub)
-- Mobile app (React Native)
 - Push notifications
 - Data backup/restore
 - Advanced analytics
 - Mood patterns detection
 - Journaling features
 - Community features
+- Goals features
 
 ## 🤝 Contributing
 
@@ -784,5 +775,5 @@ This project is part of an academic course project.
 
 ---
 
-**Last Updated:** 13 November, 2025
+**Last Updated:** 18 November, 2025
 **Version:** 1.0.0

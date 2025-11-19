@@ -173,23 +173,34 @@ export default function DashboardLayout({
                 </div>
               </div>
             ) : user ? (
-              <div className="flex items-center space-x-3 p-3 rounded-xl bg-slate-100 dark:bg-slate-700">
-                <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center">
-                  <span className="text-sm font-semibold text-white">
-                    {getInitials(user.name)}
-                  </span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-slate-900 dark:text-white truncate">
-                    {user.name}
-                  </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
-                    {user.email}
-                  </p>
-                </div>
+              <div className="flex items-center space-x-3 p-3 rounded-xl bg-slate-100 dark:bg-slate-700 group">
                 <button
-                  onClick={handleLogout}
-                  className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+                  onClick={() => {
+                    router.push("/dashboard/settings");
+                    setSidebarOpen(false);
+                  }}
+                  className="flex items-center space-x-3 flex-1 min-w-0 text-left hover:opacity-80 transition-opacity cursor-pointer"
+                >
+                  <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-sm font-semibold text-white">
+                      {getInitials(user.name)}
+                    </span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-slate-900 dark:text-white truncate">
+                      {user.name}
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
+                      {user.email}
+                    </p>
+                  </div>
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleLogout();
+                  }}
+                  className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors flex-shrink-0"
                   title="Logout"
                 >
                   <LogOut className="w-4 h-4" />

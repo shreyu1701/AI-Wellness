@@ -314,13 +314,20 @@ export default function SettingsPage() {
 
     setSaving(true);
     try {
-      // Note: We would need a delete account API endpoint
-      // For now, just clear localStorage and redirect
+      // Call the delete account API endpoint
+      await axios.request({
+        method: "DELETE",
+        url: "/api/user/delete",
+        data: { userId: user._id },
+      });
+
+      // Clear localStorage after successful deletion
       localStorage.removeItem("user");
       localStorage.removeItem("darkMode");
       localStorage.removeItem("notifications");
+
       setSuccessMessage(
-        "Account deletion requested. Redirecting to sign in..."
+        "Account deleted successfully. Redirecting to sign in..."
       );
       setIsError(false);
       setShowSuccessModal(true);
@@ -329,7 +336,9 @@ export default function SettingsPage() {
       }, 2000);
     } catch (error: any) {
       console.error("Error deleting account:", error);
-      setSuccessMessage("Failed to delete account");
+      setSuccessMessage(
+        error?.response?.data?.message || "Failed to delete account"
+      );
       setIsError(true);
       setShowSuccessModal(true);
       setTimeout(() => setShowSuccessModal(false), 3000);
